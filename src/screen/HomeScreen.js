@@ -3,7 +3,7 @@ import { useAtom } from "jotai";
 
 import { randomIdAtom } from "../atoms/randomId";
 import MyButton from "../components/MyButton";
-import GetRandomCharacter from "../api/GetRandomCharacter";
+import RandomCharacterInfo from "../components/RandomCharacterInfo";
 import getRandom from "../functions/getRandom";
 
 export default function HomeScreen({ navigation }) {
@@ -30,7 +30,7 @@ export default function HomeScreen({ navigation }) {
         Your character today:
       </Text>
 
-      {randomId !== 0 && <GetRandomCharacter randomNumber={randomId} />}
+      {randomId !== 0 && <RandomCharacterInfo randomNumber={randomId} />}
       <MyButton
         onPress={() => {
           navigation.navigate("Search");

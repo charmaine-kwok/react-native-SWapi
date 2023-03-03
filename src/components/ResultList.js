@@ -24,36 +24,31 @@ export default function ResultList(props) {
       <FlatList
         data={data.results}
         renderItem={({ item, index }) => (
-          <View className=" flex-row text-white items-center border-white border rounded-2xl my-3">
-            <View className="my-3 mx-5 justify-center items-center rounded-full">
-              <Image
-                height={80}
-                width={80}
-                className="rounded-full object-fill"
-                source={{
-                  uri: `https://starwars-visualguide.com/assets/img/characters/${
-                    item.url.split("/").slice(-2, -1)[0]
-                  }.jpg`,
-                }}
-              />
-            </View>
-            <View className="w-1/2">
-              <Text className=" font-semibold italic text-xl text-white">
-                {item.name}
-              </Text>
-            </View>
-            <View className=" ">
-              <Pressable
-                onPress={() => {
-                  props.navigation.navigate("Details", { name: item.name });
-                }}
-              >
-                <Text className="  underline italic text-lg text-white">
-                  {">"}Details
+          <Pressable
+            onPress={() => {
+              props.navigation.navigate("Details", { name: item.name });
+            }}
+          >
+            <View className=" flex-row text-white items-center border-white border rounded-2xl my-3">
+              <View className="my-3 mx-5 justify-center items-center rounded-full">
+                <Image
+                  height={80}
+                  width={80}
+                  className="rounded-full object-fill"
+                  source={{
+                    uri: `https://starwars-visualguide.com/assets/img/characters/${
+                      item.url.split("/").slice(-2, -1)[0]
+                    }.jpg`,
+                  }}
+                />
+              </View>
+              <View className="w-1/2">
+                <Text className=" font-semibold italic text-xl text-white">
+                  {item.name}
                 </Text>
-              </Pressable>
+              </View>
             </View>
-          </View>
+          </Pressable>
         )}
         keyExtractor={(item, index) => index}
       />

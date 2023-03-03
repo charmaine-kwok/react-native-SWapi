@@ -13,7 +13,11 @@ function MyStack() {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Search" component={SearchScreen} />
       <Stack.Screen name="Character" component={ResultListScreen} />
-      <Stack.Screen name="Details" component={ResultDetailScreen} />
+      <Stack.Screen
+        name="Details"
+        component={ResultDetailScreen}
+        options={({ route }) => ({ title: route.params.name })}
+      />
     </Stack.Navigator>
   );
 }
