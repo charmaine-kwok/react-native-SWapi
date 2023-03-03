@@ -1,24 +1,8 @@
 import { useCharacterById } from "./Hooks";
 import { Text, View, StyleSheet, FlatList, Image } from "react-native";
 
-import { useAtom } from "jotai";
-import { randomIdAtom } from "../atoms/randomId";
-
-import { useEffect } from "react";
-
-export default function GetRandomCharacter() {
-  let data,
-    isFetching,
-    isLoading = true;
-
-  const [randomId, _] = useAtom(randomIdAtom);
-  useEffect(() => {
-    // { data, isFetching, isLoading } = useCharacterById(randomId);
-    ret = useCharacterById(randomId);
-    data = ret.data;
-    isFetching = ret.isFetching;
-    isLoading = ret.isLoading;
-  }, [randomId]);
+export default function GetRandomCharacter(props) {
+  const { data, isFetching, isLoading } = useCharacterById(props.randomNumber);
 
   if (isFetching || isLoading) {
     return (

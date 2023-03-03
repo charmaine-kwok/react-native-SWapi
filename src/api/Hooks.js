@@ -30,7 +30,6 @@ export const getSearchCharacter = async (name) => {
   console.log(SWapi);
 
   const response = await axios.get(SWapi);
-  // console.log(response.data);
   return response.data;
 };
 
@@ -39,10 +38,5 @@ export const useSearchCharacter = (name) => {
     ["getSearchCharacter", name],
     () => getSearchCharacter(name)
   );
-  // console.log(data);
   return { data, isFetching, isLoading };
 };
-
-// const
-
-// https://starwars-visualguide.com/assets/img/characters/60.jpg

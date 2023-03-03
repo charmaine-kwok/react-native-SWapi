@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View } from "react-native";
+import { Text, View } from "react-native";
 
 import Form from "../components/Form";
 

@@ -2,8 +2,6 @@ import { useSearchCharacter } from "../api/Hooks";
 import { Text, View, StyleSheet, FlatList, Image } from "react-native";
 
 export default function CharacterInfo(props) {
-  console.log("props.name");
-  console.log(props.name);
   const { data, isFetching, isLoading } = useSearchCharacter(props.name);
 
   if (isFetching || isLoading) {
@@ -13,7 +11,6 @@ export default function CharacterInfo(props) {
     );
   }
   console.log("Data:", data.results);
-  const pic = data.results[0].url.split("/").slice(-2, -1)[0];
 
   return (
     <View style={styles.list}>

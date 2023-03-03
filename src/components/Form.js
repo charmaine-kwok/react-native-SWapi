@@ -63,10 +63,8 @@ export default function From(props) {
           style={styles.buttonInner}
           color="white"
           title="Search"
-          //   onPress={handleSubmit(getSearchCharacter)}
           onPress={handleSubmit((data) => {
-            // getSearchCharacter();
-            props.onSearch.navigate("SearchResult", { params: data });
+            props.onSearch.navigate("Character", { params: data });
           })}
         />
       </View>

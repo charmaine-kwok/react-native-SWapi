@@ -10,7 +10,11 @@ export default function HomeScreen({ navigation }) {
   const [randomId, setRandomId] = useAtom(randomIdAtom);
 
   const onPressHandler = () => {
-    setRandomId(getRandom(1, 100));
+    let randomNum = getRandom(1, 84);
+    if (randomNum === 17) {
+      randomNum = getRandom(1, 84);
+    }
+    setRandomId(randomNum);
   };
   console.log(randomId);
 
@@ -26,7 +30,7 @@ export default function HomeScreen({ navigation }) {
         Your character today:
       </Text>
 
-      {/* <GetRandomCharacter /> */}
+      {randomId !== 0 && <GetRandomCharacter randomNumber={randomId} />}
       <MyButton
         onPress={() => {
           navigation.navigate("Search");
@@ -37,7 +41,6 @@ export default function HomeScreen({ navigation }) {
           Search a Star Wars Character
         </Text>
       </MyButton>
-      {/* <StatusBar style="auto" /> */}
     </View>
   );
 }
