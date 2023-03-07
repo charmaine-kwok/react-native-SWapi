@@ -13,16 +13,18 @@ export default function TestScreen({ navigation }) {
       {/* First section */}
       <View className="flex-row items-center justify-start mx-5">
         <Image
-          className="w-16 h-16 my-10 rounded-full"
+          className="w-14 h-16 my-10 rounded-full"
           source={require("../../assets/yoda.jpeg")}
         />
-        <Text className="mx-5 font-semibold text-3xl color-white">
+        <Text className="mx-3 font-semibold text-3xl color-white">
           Star-Wars API
         </Text>
-        <Image
-          className="w-28 h-32 "
-          source={require("../../assets/star-wars-4.png")}
-        />
+        <View>
+          <Image
+            className="w-28 h-32 px-4 object-fill"
+            source={require("../../assets/star-wars-4.png")}
+          />
+        </View>
       </View>
 
       {/* Second section */}

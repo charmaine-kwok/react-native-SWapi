@@ -1,18 +1,26 @@
 {
   "expo": {
-    "name": "star-wars-barejs",
+    "name": "Star-Wars-barejs",
+    "description": "A Star-Wars API",
     "slug": "star-wars-barejs",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/starwars_icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/pngwing.png",
       "resizeMode": "contain",
-      "backgroundColor": "black"
+      "backgroundColor": "#000000"
     },
-    "assetBundlePatterns": ["**/*"],
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
+      "bundleIdentifier": "com.mycompany.StarWarsBarejs",
+      "buildNumber": "1.0.0",
       "supportsTablet": true,
       "splash": {
         "image": "./assets/pngwing.png",
@@ -21,13 +29,20 @@
       }
     },
     "android": {
+      "package": "com.mycompany.StarWarsBarejs",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#000000"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e98524aa-f294-49ad-892b-e6df0725f3aa"
+      }
     }
   }
 }

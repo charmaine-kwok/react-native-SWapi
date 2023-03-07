@@ -79,7 +79,7 @@ export default function FilmDetails(props) {
             </ReadMore> */}
             <View style={styles.desc}>
               <ReadMore
-                numberOfLines={3}
+                numberOfLines={7}
                 renderTruncatedFooter={this._renderTruncatedFooter}
                 renderRevealedFooter={this._renderRevealedFooter}
               >
