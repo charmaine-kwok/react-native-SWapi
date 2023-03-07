@@ -1,4 +1,4 @@
-import { useCharacterById } from "../api/Hooks";
+import { useCharacterById } from "../../api/Hooks";
 import { Text, View } from "react-native";
 import CharacterDetails from "./CharacterDetails";
 

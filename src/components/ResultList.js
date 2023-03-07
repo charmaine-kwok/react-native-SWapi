@@ -1,15 +1,27 @@
-import { useSearchCharacter } from "../api/Hooks";
-import {
-  Text,
-  View,
-  StyleSheet,
-  FlatList,
-  Image,
-  Pressable,
-} from "react-native";
+import { useSearchCharacter, useSearchFilm } from "../api/Hooks";
+import { Text, StyleSheet } from "react-native";
+import { useAtom } from "jotai";
+
+import CharacterList from "./character/CharacterList";
+import FilmList from "./film/FilmList";
+import { categoryAtom } from "../atoms/category";
 
 export default function ResultList(props) {
-  const { data, isFetching, isLoading } = useSearchCharacter(props.name);
+  console.log("props.name");
+  console.log(props.name);
+
+  const [category, setCategory] = useAtom(categoryAtom);
+  console.log(category);
+
+  switch (category) {
+    case "films":
+      console.log("this is a film.");
+      ({ data, isFetching, isLoading } = useSearchFilm(props.name));
+
+    case "characters":
+      console.log("this is a character.");
+      ({ data, isFetching, isLoading } = useSearchCharacter(props.name));
+  }
 
   if (isFetching || isLoading) {
     console.log("isFetching");
@@ -17,50 +29,15 @@ export default function ResultList(props) {
       <Text className="font-bold text-xl text-white italic">Loading...</Text>
     );
   }
-  console.log("Data:", data.results);
+  // console.log("Data:", data.results);
+  switch (category) {
+    case "films":
+      console.log("this is a film.");
+      return <FilmList data={data.results} navigation={props.navigation} />;
 
-  return (
-    <View style={styles.list}>
-      <FlatList
-        data={data.results}
-        renderItem={({ item, index }) => (
-          <Pressable
-            onPress={() => {
-              props.navigation.navigate("Details", { name: item.name });
-            }}
-          >
-            <View className=" flex-row text-white items-center border-white border rounded-2xl my-3">
-              <View className="my-3 mx-5 justify-center items-center rounded-full">
-                <Image
-                  height={80}
-                  width={80}
-                  className="rounded-full object-fill"
-                  source={{
-                    uri: `https://starwars-visualguide.com/assets/img/characters/${
-                      item.url.split("/").slice(-2, -1)[0]
-                    }.jpg`,
-                  }}
-                />
-              </View>
-              <View className="w-1/2">
-                <Text className=" font-semibold italic text-xl text-white">
-                  {item.name}
-                </Text>
-              </View>
-            </View>
-          </Pressable>
-        )}
-        keyExtractor={(item, index) => index}
-      />
-    </View>
-  );
+    case "characters":
+      return (
+        <CharacterList data={data.results} navigation={props.navigation} />
+      );
+  }
 }
-
-const styles = StyleSheet.create({
-  list: {
-    marginVertical: 10,
-    marginHorizontal: 15,
-    minHeight: 100,
-    flexDirection: "row",
-  },
-});

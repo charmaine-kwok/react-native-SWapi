@@ -1,4 +1,4 @@
-import { useSearchCharacter } from "../api/Hooks";
+import { useSearchCharacter } from "../../api/Hooks";
 import { Text, View } from "react-native";
 import CharacterDetails from "./CharacterDetails";
 

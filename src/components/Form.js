@@ -1,10 +1,9 @@
 import { Text, View, StyleSheet, TextInput, Button, Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
-import { getSearchCharacter } from "../api/Hooks";
 import { useAtom } from "jotai";
 import { characterNameAtom } from "../atoms/characterName";
 
-export default function From(props) {
+export default function Form(props) {
   const {
     register,
     setValue,
@@ -17,9 +16,10 @@ export default function From(props) {
       Name: "",
     },
   });
-  //   const onSubmit = (data) => {
-  //     console.log(data);
-  //   };
+
+  const onSubmit = (data) => {
+    props.onSearch.navigate("Character", { params: data, name: props.name });
+  };
 
   const onChange = (arg) => {
     return {
@@ -29,7 +29,7 @@ export default function From(props) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Name</Text>
+      <Text style={styles.label}>{props.name}</Text>
       <Controller
         control={control}
         render={({ field: { onChange, onBlur, value } }) => (
@@ -38,7 +38,7 @@ export default function From(props) {
             onBlur={onBlur}
             onChangeText={(value) => onChange(value)}
             value={value}
-            placeholder="Luke Skywalker"
+            placeholder={props.placeholder}
           />
         )}
         name="Name"
@@ -47,7 +47,6 @@ export default function From(props) {
 
       <View style={styles.button}>
         <Button
-          style={styles.buttonInner}
           color="white"
           title="Reset"
           onPress={() => {
@@ -59,14 +58,7 @@ export default function From(props) {
       </View>
 
       <View style={styles.button}>
-        <Button
-          style={styles.buttonInner}
-          color="white"
-          title="Search"
-          onPress={handleSubmit((data) => {
-            props.onSearch.navigate("Character", { params: data });
-          })}
-        />
+        <Button color="white" title="Search" onPress={handleSubmit(onSubmit)} />
       </View>
     </View>
   );
@@ -99,9 +91,5 @@ const styles = StyleSheet.create({
     height: 40,
     padding: 10,
     borderRadius: 4,
-  },
-  buttonInner: {
-    color: "black",
-    backgroundColor: "#ec5990",
   },
 });
