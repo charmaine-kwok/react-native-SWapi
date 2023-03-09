@@ -1,11 +1,6 @@
-import {
-  Text,
-  View,
-  StyleSheet,
-  FlatList,
-  Image,
-  Pressable,
-} from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
+
+import FilmListItem from "./FilmListItem";
 
 export default function FilmList(props) {
   console.log(props.data);
@@ -14,31 +9,7 @@ export default function FilmList(props) {
       <FlatList
         data={props.data}
         renderItem={({ item, index }) => (
-          <Pressable
-            onPress={() => {
-              props.navigation.navigate("FilmDetails", { name: item.title });
-            }}
-          >
-            <View className=" flex-row text-white items-center border-white border rounded-2xl my-3">
-              <View className="my-3 mx-5 justify-center items-center rounded-full">
-                <Image
-                  height={80}
-                  width={80}
-                  className="rounded-full object-fill"
-                  source={{
-                    uri: `https://starwars-visualguide.com/assets/img/films/${
-                      item.url.split("/").slice(-2, -1)[0]
-                    }.jpg`,
-                  }}
-                />
-              </View>
-              <View className="w-1/2">
-                <Text className=" font-semibold italic text-xl text-white">
-                  {item.title}
-                </Text>
-              </View>
-            </View>
-          </Pressable>
+          <FilmListItem item={item} navigation={props.navigation} />
         )}
         keyExtractor={(item, index) => index}
       />

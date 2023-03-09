@@ -1,8 +1,11 @@
 import { Text, View, StyleSheet, FlatList, Image } from "react-native";
 
 export default function CharacterDetails(props) {
+  console.log("props");
+  console.log(props);
   return (
     <FlatList
+      className="min-h-max"
       data={props.data}
       renderItem={({ item, index }) => (
         <View>
@@ -37,7 +40,7 @@ const styles = StyleSheet.create({
   desc: {
     color: "white",
     textAlign: "left",
-    marginLeft: 60,
+    marginLeft: 80,
     fontSize: 18,
   },
 });

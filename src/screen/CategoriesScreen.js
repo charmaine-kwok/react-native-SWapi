@@ -34,10 +34,24 @@ export default function CategoriesScreen({ navigation }) {
     {
       name: "SPECIES",
       pic: require("../../assets/categories/species.jpg"),
+      link: () => {
+        setCategory("species");
+        navigation.navigate("Search", {
+          title: "Species",
+          placeholder: "Human",
+        });
+      },
     },
     {
       name: "STARSHIPS",
       pic: require("../../assets/categories/starships.jpg"),
+      link: () => {
+        setCategory("starships");
+        navigation.navigate("Search", {
+          title: "Starship",
+          placeholder: "Alderaan",
+        });
+      },
     },
     {
       name: "VEHICLES",
@@ -46,6 +60,13 @@ export default function CategoriesScreen({ navigation }) {
     {
       name: "PLANETS",
       pic: require("../../assets/categories/planets.jpg"),
+      link: () => {
+        setCategory("planets");
+        navigation.navigate("Search", {
+          title: "Planet",
+          placeholder: "Alderaan",
+        });
+      },
     },
   ];
 

@@ -5,6 +5,7 @@ import SearchScreen from "./SearchScreen";
 import ResultListScreen from "./ResultListScreen";
 import CharacterResultDetailScreen from "./CharacterResultDetailsScreen";
 import FilmResultDetailsScreen from "./FilmResultDetailsScreen";
+import SpeciesResultDetailsScreen from "./SpeciesResultDetailsScreen";
 import TestScreen from "./TestScreen";
 import CategoriesScreen from "./CategoriesScreen";
 import RandomScreen from "./RandomScreen";
@@ -33,6 +34,11 @@ function MyStack() {
         name="FilmDetails"
         component={FilmResultDetailsScreen}
         options={({ route }) => ({ title: route.params.name })}
+      />
+      <Stack.Screen
+        name="SpeciesDetails"
+        component={SpeciesResultDetailsScreen}
+        options={({ route }) => ({ title: route.params.item.name })}
       />
     </Stack.Navigator>
   );

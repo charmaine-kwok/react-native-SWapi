@@ -1,21 +1,19 @@
-import { useSearchCharacter } from "../../api/Hooks";
 import { Text, View } from "react-native";
 import CharacterDetails from "./CharacterDetails";
+import CharacterRelatedFilm from "./CharacterRelatedFilm";
 
 export default function CharacterInfo(props) {
-  const { data, isFetching, isLoading } = useSearchCharacter(props.name);
-
-  if (isFetching || isLoading) {
-    console.log("isFetching");
-    return (
-      <Text className="font-bold text-xl text-white italic">Loading...</Text>
-    );
-  }
-  console.log("Data:", data.results);
-
   return (
-    <View className="flex-1 my-2.5 min-h-full flex-row">
-      <CharacterDetails data={data.results} />
+    <View>
+      <View className="flex-2 my-2.5 min-h-fit flex-row ">
+        <CharacterDetails data={[props.item]} />
+      </View>
+      <View className="flex-1 min-w-[80%] max-w-[80%]">
+        <CharacterRelatedFilm
+          films={props.item.films}
+          navigate={props.navigate}
+        />
+      </View>
     </View>
   );
 }

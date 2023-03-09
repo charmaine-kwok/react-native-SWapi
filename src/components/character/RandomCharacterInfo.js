@@ -15,7 +15,7 @@ export default function RandomCharacterInfo(props) {
 
   return (
     <View className="my-2 flex-row">
-      <CharacterDetails data={[data]} />
+      <CharacterDetails data={[data]} randomNumber={props.randomNumber} />
     </View>
   );
 }

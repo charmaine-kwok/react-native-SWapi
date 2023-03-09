@@ -3,7 +3,6 @@ import ResultList from "../components/ResultList";
 
 export default function ResultListScreen({ navigation, route }) {
   const name = route.params.params.Name;
-  console.log("Name:", name);
 
   return (
     <View className="flex-1 items-center bg-neutral-700">

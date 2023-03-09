@@ -1,9 +1,10 @@
 import { View, StyleSheet } from "react-native";
 import { FlashList } from "@shopify/flash-list";
 
-import CharacterListItem from "./CharacterListItem";
+import SpeciesListItem from "./SpeciesListItem";
 
-export default function CharacterList(props) {
+export default function SpeciesList(props) {
+  console.log("in species list");
   console.log(props.data);
 
   return (
@@ -12,7 +13,7 @@ export default function CharacterList(props) {
         estimatedItemSize={50}
         data={props.data}
         renderItem={({ item, index }) => (
-          <CharacterListItem item={item} navigation={props.navigation} />
+          <SpeciesListItem item={item} navigation={props.navigation} />
         )}
         keyExtractor={(item, index) => index}
       />

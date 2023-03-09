@@ -27,29 +27,41 @@ export const useCharacterById = (id) => {
 };
 
 // Search by character name
-const _getSearchCharacter = async (name) => {
-  const SWapi = `https://swapi.dev/api/people/?search=${name}`;
-  console.log(SWapi);
-
-  const response = await axios.get(SWapi);
-  return response.data;
-};
-
 export const useSearchCharacter = (name) => {
-  return useQuery(["getSearchCharacter", name], () =>
-    _getSearchCharacter(name)
-  );
+  return useQuery(["getSearchCharacter", name], async () => {
+    const SWapi = `https://swapi.dev/api/people/?search=${name}`;
+    const response = await axios.get(SWapi);
+    return response.data;
+  });
 };
 
 // Search by film name
-const _getSearchFilm = async (name) => {
-  const SWapi = `https://swapi.dev/api/films/?search=${name}`;
+export const useSearchFilm = (name) => {
+  return useQuery(["getSearchCharacter", name], async () => {
+    const SWapi = `https://swapi.dev/api/films/?search=${name}`;
+    console.log(SWapi);
+
+    const response = await axios.get(SWapi);
+    return response.data;
+  });
+};
+
+// Search by film id
+export const getSearchFilmById = async (item) => {
+  const SWapi = `https://swapi.dev/api/films/${item.queryKey[1]}`;
   console.log(SWapi);
 
   const response = await axios.get(SWapi);
   return response.data;
 };
 
-export const useSearchFilm = (name) => {
-  return useQuery(["getSearchCharacter", name], () => _getSearchFilm(name));
+// Search by species name
+export const useSearchSpecies = (name) => {
+  return useQuery(["getSearchSpecies", name], async () => {
+    const SWapi = `https://swapi.dev/api/species/?search=${name}`;
+    console.log(SWapi);
+
+    const response = await axios.get(SWapi);
+    return response.data;
+  });
 };

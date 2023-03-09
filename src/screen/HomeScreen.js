@@ -1,11 +1,17 @@
 import { View, Text, Image } from "react-native";
 import { useAtom } from "jotai";
+import { useLayoutEffect } from "react";
 
 import { randomIdAtom } from "../atoms/randomId";
 import MyButton from "../components/MyButton";
 import getRandom from "../functions/getRandom";
 
 export default function HomeScreen({ navigation }) {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: null,
+    });
+  });
   const [randomId, setRandomId] = useAtom(randomIdAtom);
 
   const onPressHandler = () => {
